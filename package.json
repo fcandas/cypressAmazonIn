@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/fcandas/cypressAmazonIn#readme",
   "dependencies": {
-    "cypress": "^9.5.1"
+    "cypress": "^9.5.1",
+    "jsonpath": "^1.1.1"
+  },
+  "devDependencies": {
+    "node-xlsx": "^0.21.0"
   }
 }
