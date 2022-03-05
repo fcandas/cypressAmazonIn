@@ -21,11 +21,24 @@ class Objects{
     clickAddToCart(){
         return cy.get('input[id="add-to-cart-button"]')
     }
+
     clickInnerAddToCart(){
-        return cy.get('input[aria-labelledby="attachSiAddCoverage-announce"]')
+        return cy.get('span[id=attachSiAddCoverage-announce]')
+    }
+    
+    click2AddToCart(){
+        return cy.get('span[id=a-autoid-0-announce]')
     }
 
-
+    clickSkip(){
+        return cy.get('span[id=attachSiNoCoverage]',{force:true})
+    }
+    
+    clickLastCart(){
+        return cy.get('input[class=a-button-input]')
+    }
+    
+    
     
 }
 

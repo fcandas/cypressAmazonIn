@@ -11,6 +11,7 @@ describe ('Amazon.in Test', () =>{
           rowsLength = rows.length;
           cy.writeFile("cypress/fixtures/xlsxData.json", {rows})
         })
+          cy.clearCookies();
           cy.visit('/');
         })
 
@@ -46,7 +47,7 @@ describe ('Amazon.in Test', () =>{
        it ('Click third item', () => {
 
         cy.wait(5000)
-        objects.clickThirdItem().eq(3).click();
+        objects.clickThirdItem().eq(3).invoke('attr', 'target', ' _self').click();
                 
       })
 
@@ -54,13 +55,19 @@ describe ('Amazon.in Test', () =>{
 
         objects.clickAddToCart().click();
         cy.wait(2000);
-        //objects.clickInnerAddToCart().click();
-
-        if (objects.clickInnerAddToCart('active')) {
-            objects.clickInnerAddToCart().click();
+       
+        cy.get('body').then(($a) => { 
+          if ($a.text().includes('Skip')) {
+              objects.clickSkip().click();
+              cy.log('Skip area');
+              cy.wait(3000);
+          } else if ($a.get('span[id=a-autoid-0-announce]').length>0) { 
+              objects.clickLastCart().click();
+              cy.log('Add to cart area');
           } else {
-            return true;
+              return true;
           }
+      })
                 
       })
 
