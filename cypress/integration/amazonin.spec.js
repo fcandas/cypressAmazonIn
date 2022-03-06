@@ -62,7 +62,7 @@ describe ('Amazon.in Test', () =>{
               cy.log('Skip area');
               cy.wait(3000);
           } else if ($a.get('span[id=a-autoid-0-announce]').length>0) { 
-              objects.clickLastCart().click();
+              objects.click2AddToCart().click();
               cy.log('Add to cart area');
           } else {
               return true;
